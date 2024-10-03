@@ -1,0 +1,48 @@
+﻿<Window x:Class="RandomCursorMover.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomCursorMover"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Style="{StaticResource MaterialDesignWindow}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="400">
+    <Grid  Margin="0,10,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Random Cursor Mover" />
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="4*" />
+               
+            </Grid.RowDefinitions>
+            <TextBox
+                Grid.Row="0"
+                materialDesign:HintAssist.Hint="Random cursor movement (seconds)"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+               x:Name="textBox"
+                MaxHeight="40"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                TextWrapping="Wrap" />
+            <Button
+                Grid.Row="1"
+                Width="200"
+                Click="ButtonBase_OnClick"
+                Content="START"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                ToolTip="MaterialDesignFlatLightButton" />
+        </Grid>
+        <materialDesign:Chip
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Content="Press ESC to stop" />
+    </Grid>
+</Window>
